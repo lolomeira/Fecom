@@ -1,17 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aumento do Nível do Mar</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Aumento do Nível do Oceano</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(to top, #87ceeb, #ffffff);
+    }
+
+    .agua {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20%;
+      background-color: #0077be;
+      transition: height 2s ease;
+      z-index: 1;
+    }
+
+    .terra {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: #654321;
+      z-index: 0;
+    }
+
+    .texto {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 2;
+    }
+
+    button {
+      position: absolute;
+      top: 80px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #ff6b6b;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    button:hover {
+      background-color: #ff4b4b;
+    }
+  </style>
 </head>
 <body>
-  <div class="cenario">
-    <div class="terra">
-      <h1>🌍 Cidade Litorânea</h1>
+  <div class="container">
+    <div class="texto">
+      <strong>Aquecimento Global</strong><br>
+      Clique para ver o aumento do nível do oceano
     </div>
-    <div class="oceano"></div>
+    <button onclick="aumentarNivel()">Aumentar Nível do Mar</button>
+    <div class="agua" id="agua"></div>
+    <div class="terra"></div>
   </div>
+
+  <script>
+    let nivel = 20;
+
+    function aumentarNivel() {
+      if (nivel < 90) {
+        nivel += 10;
+        document.getElementById('agua').style.height = nivel + "%";
+      } else {
+        alert("Nível crítico atingido!");
+      }
+    }
+  </script>
 </body>
 </html>
