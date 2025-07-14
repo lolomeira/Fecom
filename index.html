@@ -22,23 +22,34 @@
     }
 
  
-    .agua {
-      margin-top: auto;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 10%;
-      background-color: #0077be;
-      transition: height 2s ease;
-      z-index: 2;
-      animation: ondas 3s infinite ease-in-out;
-  }
+   .agua {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #0077be;
+  transition: height 2s ease;
+  z-index: 2;
+  overflow: hidden;
+}
 
-  @keyframes ondas {
-    0% { border-radius: 0 0 50px 50px / 0 0 20px 20px; }
-    50% { border-radius: 0 0 70px 70px / 0 0 30px 30px; }
-    100% { border-radius: 0 0 50px 50px / 0 0 20px 20px; }
-  }
+.agua::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 200%;
+  height: 40px;
+  background: radial-gradient(circle at 50% 50%, #ffffff33 20%, transparent 21%);
+  background-size: 50px 100%;
+  animation: onda 4s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes onda {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 
     .terra {
       position: absolute;
