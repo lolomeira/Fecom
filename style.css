@@ -11,14 +11,7 @@ body {
     
 }
 
- .barco {
-  position: absolute;
-  bottom: calc(10% + 10px);
-  width: 60px;
-  z-index: 3;
-  animation: flutuar 3s ease-in-out infinite;
 
-}
 
 @keyframes flutuar {
   0%, 100% { transform: translateY(0); }
