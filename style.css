@@ -110,3 +110,20 @@ body {
       font-weight: bold;
       z-index: 3;
     }
+
+    .nuvem {
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 30px 10px 0 #fff, 60px 0 0 #fff;
+  opacity: 0.8;
+  animation: moverNuvem 30s linear infinite;
+  z-index: 4;
+}
+
+@keyframes moverNuvem {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
