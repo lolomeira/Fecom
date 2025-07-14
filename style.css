@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to top, #87ceeb, #ffffff);
+}
+
+.barco {
+  position: absolute;
+  bottom: calc(10% + 10px);
+  width: 40px;
+  height: 20px;
+  background: brown;
+  border-radius: 10px 10px 0 0;
+  z-index: 3;
+  animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+   .agua {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #0077be;
+  transition: height 2s ease;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.agua::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  width: 200%;
+  height: 40px;
+  background: radial-gradient(circle at 50% 50%, #ffffff33 20%, transparent 21%);
+  background-size: 50px 100%;
+  animation: onda 4s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes onda {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+    .terra {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: #654321;
+      z-index: 0;
+    }
+
+    .areia {
+      position: absolute;
+      bottom: 30%;
+      width: 100%;
+      height: 5%;
+      background: #f4e2b0;
+      z-index: 1;
+    }
+
+    .texto {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 3;
+    }
+
+    button {
+      position: absolute;
+      top: 80px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #ff6b6b;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    button:hover {
+      background-color: #ff4b4b;
+    }
+
+    .contador {
+      position: absolute;
+      top: 140px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 3;
+    }
