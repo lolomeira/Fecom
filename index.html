@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Aumento do Nível do Oceano</title>
+  <title>Aumento do Nível do Mar</title>
   <style>
     body {
       margin: 0;
@@ -23,7 +23,7 @@
       height: 20%;
       background-color: #0077be;
       transition: height 2s ease;
-      z-index: 1;
+      z-index: 2;
     }
 
     .terra {
@@ -35,6 +35,42 @@
       z-index: 0;
     }
 
+    .areia {
+      position: absolute;
+      bottom: 30%;
+      width: 100%;
+      height: 5%;
+      background: #f4e2b0;
+      z-index: 1;
+    }
+
+    .cidade {
+      position: absolute;
+      bottom: 35%;
+      display: flex;
+      gap: 10px;
+      left: 10%;
+      z-index: 1;
+    }
+
+    .casa, .predio {
+      background-color: #ccc;
+      border: 2px solid #666;
+      border-radius: 4px;
+    }
+
+    .casa {
+      width: 40px;
+      height: 40px;
+      background-color: #ffcc00;
+    }
+
+    .predio {
+      width: 30px;
+      height: 70px;
+      background-color: #9999ff;
+    }
+
     .texto {
       position: absolute;
       top: 20px;
@@ -42,7 +78,7 @@
       background: rgba(255, 255, 255, 0.8);
       padding: 10px 20px;
       border-radius: 8px;
-      z-index: 2;
+      z-index: 3;
     }
 
     button {
@@ -56,11 +92,22 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
-      z-index: 2;
+      z-index: 3;
     }
 
     button:hover {
       background-color: #ff4b4b;
+    }
+
+    .contador {
+      position: absolute;
+      top: 140px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 5px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 3;
     }
   </style>
 </head>
@@ -71,7 +118,17 @@
       Clique para ver o aumento do nível do oceano
     </div>
     <button onclick="aumentarNivel()">Aumentar Nível do Mar</button>
+    <button onclick="resetarNivel()" style="top: 130px;">Resetar</button>
+    <div class="contador" id="contador">Nível do mar: 20%</div>
+
     <div class="agua" id="agua"></div>
+    <div class="areia"></div>
+    <div class="cidade">
+      <div class="casa"></div>
+      <div class="predio"></div>
+      <div class="casa"></div>
+      <div class="predio"></div>
+    </div>
     <div class="terra"></div>
   </div>
 
@@ -82,9 +139,16 @@
       if (nivel < 90) {
         nivel += 10;
         document.getElementById('agua').style.height = nivel + "%";
+        document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
       } else {
         alert("Nível crítico atingido!");
       }
+    }
+
+    function resetarNivel() {
+      nivel = 20;
+      document.getElementById('agua').style.height = nivel + "%";
+      document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
     }
   </script>
 </body>
