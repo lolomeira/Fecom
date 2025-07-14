@@ -19,15 +19,23 @@
       background: linear-gradient(to top, #87ceeb, #ffffff);
     }
 
+ 
     .agua {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 10%;
-      background-color: #0077be;
-      transition: height 2s ease;
-      z-index: 2;
-    }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #0077be;
+  transition: height 2s ease;
+  z-index: 2;
+  animation: ondas 3s infinite ease-in-out;
+}
+
+@keyframes ondas {
+  0% { border-radius: 0 0 50px 50px / 0 0 20px 20px; }
+  50% { border-radius: 0 0 70px 70px / 0 0 30px 30px; }
+  100% { border-radius: 0 0 50px 50px / 0 0 20px 20px; }
+}
 
     .terra {
       position: absolute;
