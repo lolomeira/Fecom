@@ -18,7 +18,7 @@ body {
   50% { transform: translateY(-5px); }
 }
 
- .agua {
+.agua {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -28,41 +28,42 @@ body {
   z-index: 2;
   overflow: hidden;
 
-  animation: subirDescer 3s ease-in-out infinite;
+  /* Movimento vertical do mar */
+  animation: movimentoAgua 4s ease-in-out infinite;
 }
 
-@keyframes subirDescer {
+@keyframes movimentoAgua {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
     transform: translateY(-5px);
   }
-
 }
+
 
 .agua::before {
   content: "";
   position: absolute;
-  top: -20px;
+  top: 0;
+  left: 0;
   width: 200%;
-  height: 40px;
-  background: radial-gradient(circle at 50% 50%, #ffffff33 20%, transparent 21%);
-  background-size: 50px 100%;
-  animation: onda 4s linear infinite, ondular 2s ease-in-out infinite;
-  opacity: 0.5;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff33" d="M0 15 Q 30 0, 60 15 T 120 15 V 28 H 0 Z"/></svg>') repeat-x;
+  background-size: 200% 100%;
+  animation: ondaHorizontal 6s linear infinite, ondaVertical 2s ease-in-out infinite;
+  opacity: 0.6;
 }
 
-@keyframes onda {
+@keyframes ondaHorizontal {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-@keyframes ondular {
-  0%, 100% { top: -20px; }
-  50% { top: -15px; }
+@keyframes ondaVertical {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
-
 
 
     .terra {
