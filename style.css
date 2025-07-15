@@ -65,23 +65,23 @@
       }
     }
 
-    .agua::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff33" d="M0 15 Q 30 0, 60 15 T 120 15 V 28 H 0 Z"/></svg>') repeat-x;
-      background-size: 200% 100%;
-      animation: ondaHorizontal 6s linear infinite, ondaVertical 2s ease-in-out infinite;
-      opacity: 0.6;
-    }
+   .agua::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff33" d="M0 20 Q 30 0, 60 20 T 120 20 V 28 H 0 Z"/></svg>') repeat-x;
+  background-size: 200% 100%;
+  animation: ondaHorizontal 5s linear infinite, ondaVertical 2s ease-in-out infinite;
+  opacity: 0.6;
+}
 
-    @keyframes ondaHorizontal {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+ @keyframes ondaVertical {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
     @keyframes ondaVertical {
       0%, 100% { transform: translateY(0); }
