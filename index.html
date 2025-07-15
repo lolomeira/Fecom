@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-   <link rel="stylesheet" href="style.css">
-
   <meta charset="UTF-8">
   <title>Aumento do Nível do Mar</title>
-
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
   </style>
 </head>
 <body>
   <div class="container">
-
-
     <div class="texto">
       <strong>Aquecimento Global</strong><br>
       Clique para ver o aumento do nível do oceano
     </div>
+
     <button onclick="aumentarNivel()">Aumentar Nível do Mar</button>
     <button onclick="resetarNivel()" style="top: 130px;">Resetar</button>
-    <div class="contador" id="contador">Nível do mar: 10%</div>
+    <div class="contador" id="contador">Nível do mar: 20%</div>
 
     <div class="agua" id="agua"></div>
-    <div class="agua before"></div>
     <div class="areia"></div>
     <div class="terra"></div>
-    <div class="barco" style="left: 30%; animation-delay: 0s;"></div>
-  <div class="barco" style="left: 60%; animation-delay: 2s;"></div>
-  </div>
 
-  <div class="nuvem" style="top: 50px; left: -100px;"></div>
-  <div class="nuvem" style="top: 120px; left: -200px;"></div>
+    <div class="barco" style="left: 30%; animation-delay: 0s;"></div>
+    <div class="barco" style="left: 60%; animation-delay: 1.5s;"></div>
+
+    <div class="nuvem" style="top: 50px; left: -100px;"></div>
+    <div class="nuvem" style="top: 120px; left: -200px;"></div>
+  </div>
 
   <script>
     let nivel = 20;
-
-    
 
     function aumentarNivel() {
       if (nivel < 90) {
