@@ -46,8 +46,8 @@
 
     .contador {
       position: absolute;
-      top: 140px;
-      left: 20px;
+      top: 20px;
+      right: 20px;
       background: rgba(255, 255, 255, 0.8);
       padding: 5px 15px;
       border-radius: 8px;
@@ -68,15 +68,10 @@
     }
 
     @keyframes movimentoAgua {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-5px);
-      }
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
-    /* CAMADA DE ONDAS NO TOPO DO MAR */
     .agua::before {
       content: "";
       position: absolute;
@@ -128,12 +123,51 @@
       background: brown;
       border-radius: 10px 10px 0 0;
       z-index: 4;
-      animation: flutuar 3s ease-in-out infinite;
+      animation: flutuar 3s ease-in-out infinite, moverBarco 10s ease-in-out infinite alternate;
     }
 
     @keyframes flutuar {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
+    }
+
+    @keyframes moverBarco {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(40px); }
+    }
+
+    .cidade {
+      position: absolute;
+      bottom: 35%;
+      width: 50px;
+      height: 50px;
+      background: #555;
+      border: 2px solid #333;
+      z-index: 3;
+      transition: bottom 2s ease, opacity 2s ease;
+    }
+
+    .cidade::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 10px;
+      width: 30px;
+      height: 20px;
+      background: #777;
+    }
+
+    .geleira {
+      position: absolute;
+      bottom: 50%;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(to bottom, #ffffff, #cceeff);
+      border-radius: 10px;
+      z-index: 3;
+      transition: height 2s ease, opacity 2s ease;
+      box-shadow: 0 0 10px rgba(200, 255, 255, 0.7);
     }
 
     .nuvem {
@@ -158,10 +192,10 @@
   <div class="container">
     <div class="texto">
       <strong>Aquecimento Global</strong><br>
-      Clique para ver o aumento do nível do oceano
+      Clique para derreter a geleira
     </div>
 
-    <button onclick="aumentarNivel()">Aumentar Nível do Mar</button>
+    <button onclick="derreterGeleira()">Derreter Geleira</button>
     <button onclick="resetarNivel()" style="top: 130px;">Resetar</button>
     <div class="contador" id="contador">Nível do mar: 20%</div>
 
@@ -169,30 +203,70 @@
     <div class="areia"></div>
     <div class="terra"></div>
 
+    <!-- Barcos -->
     <div class="barco" style="left: 30%; animation-delay: 0s;"></div>
     <div class="barco" style="left: 60%; animation-delay: 1.5s;"></div>
 
+    <!-- Cidades -->
+    <div class="cidade" id="cidade1" style="left: 20%;"></div>
+    <div class="cidade" id="cidade2" style="left: 65%;"></div>
+
+    <!-- Nuvens -->
     <div class="nuvem" style="top: 50px; left: -100px;"></div>
     <div class="nuvem" style="top: 120px; left: -200px;"></div>
+
+    <!-- Geleira -->
+    <div class="geleira" id="geleira"></div>
   </div>
+
+  <!-- Som do mar -->
+  <audio id="som-mar" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9c4ec103e0.mp3?filename=calm-sea-waves-ambient-111427.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     let nivel = 20;
+    let geleiraAltura = 80;
 
-    function aumentarNivel() {
-      if (nivel < 90) {
+    function derreterGeleira() {
+      if (nivel < 90 && geleiraAltura > 0) {
         nivel += 10;
+        geleiraAltura -= 20;
+
         document.getElementById('agua').style.height = nivel + "%";
         document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
+
+        const geleira = document.getElementById('geleira');
+        geleira.style.height = geleiraAltura + "px";
+        geleira.style.opacity = geleiraAltura / 80;
+
+        const cidades = [document.getElementById('cidade1'), document.getElementById('cidade2')];
+        cidades.forEach(cidade => {
+          const novaAltura = 35 - (nivel * 0.3);
+          cidade.style.bottom = novaAltura + "%";
+          cidade.style.opacity = 1 - (nivel / 100);
+        });
       } else {
-        alert("Nível crítico atingido!");
+        alert("A geleira derreteu completamente!");
       }
     }
 
     function resetarNivel() {
       nivel = 20;
+      geleiraAltura = 80;
+
       document.getElementById('agua').style.height = nivel + "%";
       document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
+
+      const cidades = [document.getElementById('cidade1'), document.getElementById('cidade2')];
+      cidades.forEach(cidade => {
+        cidade.style.bottom = "35%";
+        cidade.style.opacity = 1;
+      });
+
+      const geleira = document.getElementById('geleira');
+      geleira.style.height = "80px";
+      geleira.style.opacity = 1;
     }
   </script>
 </body>
