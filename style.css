@@ -18,7 +18,7 @@ body {
   50% { transform: translateY(-5px); }
 }
 
-   .agua {
+ .agua {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -27,6 +27,18 @@ body {
   transition: height 2s ease;
   z-index: 2;
   overflow: hidden;
+
+  animation: subirDescer 3s ease-in-out infinite;
+}
+
+@keyframes subirDescer {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+
 }
 
 .agua::before {
@@ -37,7 +49,7 @@ body {
   height: 40px;
   background: radial-gradient(circle at 50% 50%, #ffffff33 20%, transparent 21%);
   background-size: 50px 100%;
-  animation: onda 4s linear infinite;
+  animation: onda 4s linear infinite, ondular 2s ease-in-out infinite;
   opacity: 0.5;
 }
 
@@ -45,6 +57,12 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+@keyframes ondular {
+  0%, 100% { top: -20px; }
+  50% { top: -15px; }
+}
+
 
 
     .terra {
