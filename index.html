@@ -97,21 +97,21 @@
       50% { top: -10px; }
     }
 
-    .terra {
+    .areia {
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 30%;
-      background: #654321;
+      height: 40%;
+      background: #b68c61;
       z-index: 0;
     }
 
-    .areia {
+    .terra {
       position: absolute;
       bottom: 30%;
       width: 100%;
-      height: 5%;
-      background: #f4e2b0;
+      height: 20%;
+      background: #2cba04;
       z-index: 1;
     }
 
@@ -158,17 +158,18 @@
     }
 
     .geleira {
-      position: absolute;
-      bottom: 50%;
-      right: 20px;
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(to bottom, #ffffff, #cceeff);
-      border-radius: 10px;
-      z-index: 3;
-      transition: height 2s ease, opacity 2s ease;
-      box-shadow: 0 0 10px rgba(200, 255, 255, 0.7);
-    }
+  position: absolute;
+  bottom: 50%;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(to bottom, #ccf0ff, #99ddff);
+  clip-path: polygon(10% 100%, 30% 20%, 50% 50%, 60% 10%, 90% 90%, 100% 70%, 80% 100%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(200, 255, 255, 0.7);
+  transition: height 2s ease, opacity 2s ease;
+}
+
 
     .nuvem {
       position: absolute;
@@ -186,6 +187,7 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(120vw); }
     }
+
   </style>
 </head>
 <body>
@@ -231,7 +233,7 @@
     function derreterGeleira() {
       if (nivel < 90 && geleiraAltura > 0) {
         nivel += 10;
-        geleiraAltura -= 20;
+        geleiraAltura -= 40;
 
         document.getElementById('agua').style.height = nivel + "%";
         document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
@@ -253,7 +255,7 @@
 
     function resetarNivel() {
       nivel = 20;
-      geleiraAltura = 80;
+      geleiraAltura = 90;
 
       document.getElementById('agua').style.height = nivel + "%";
       document.getElementById('contador').innerText = "Nível do mar: " + nivel + "%";
