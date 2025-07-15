@@ -77,6 +77,39 @@
   animation: ondaHorizontal 5s linear infinite, ondaVertical 2s ease-in-out infinite;
   opacity: 0.6;
 }
+.agua::before,
+.agua::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: 200% 100%;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.agua::before {
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 120 28' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff66' d='M0 20 Q 30 0, 60 20 T 120 20 V 28 H 0 Z'/></svg>");
+  animation: ondaHorizontal 5s linear infinite, ondaVertical 3s ease-in-out infinite;
+}
+
+.agua::after {
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 120 28' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff44' d='M0 22 Q 30 2, 60 22 T 120 22 V 28 H 0 Z'/></svg>");
+  animation: ondaHorizontalReversa 8s linear infinite, ondaVertical 4s ease-in-out infinite;
+}
+
+@keyframes ondaHorizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ondaHorizontalReversa {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
 
 @keyframes ondaVertical {
   0%, 100% { transform: translateY(0); }
